@@ -4,26 +4,6 @@ import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment from "./Appointment/index.js";
 
-
-// const days = [
-//   {
-//     id: 1,
-//     name: "Monday",
-//     spots: 2,
-//   },
-//   {
-//     id: 2,
-//     name: "Tuesday",
-//     spots: 5,
-//   },
-//   {
-//     id: 3,
-//     name: "Wednesday",
-//     spots: 0,
-//   },
-// ];
-
-
 const appointments = {
   "1": {
     id: 1,
@@ -65,11 +45,23 @@ const appointments = {
 
 
 export default function Application(props) {
-  const [day, setDay] = useState ("Monday")
-  const [days, setDays] = useState ([]);
+  // const [day, setDay] = useState ("Monday")
+  // const [days, setDays] = useState ([]);
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    // appointments: {}
+  });
+  
+  const setDay = day => {
+    setState({ ...state, day})
+  }
 
+  const setDays = (days) => { 
+    setState(prev => ({ ...prev, days }));
+  }
+  
   const mappedAppointments = Object.values(appointments).map((appointment) => {
-    //console.log("appointment: ", appointment)
     return (<Appointment key="last" time="5pm" {...appointment} />)
   })
 
@@ -90,8 +82,8 @@ export default function Application(props) {
 <hr className="sidebar__separator sidebar--centered" />
 <nav className="sidebar__menu">
 <DayList
-  days={days}
-  value={day}
+  days={state.days}
+  value={state.day}
   onChange={setDay}
 />
 </nav>
