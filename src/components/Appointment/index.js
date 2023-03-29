@@ -14,10 +14,6 @@ return (
    
     <Header time={props.time} />
     {props.interview ? <><Show student={props.interview.student} interview={props.interview.interviewer}/></> : <><Empty/></>}
-    
-
-
-
   </article>
 )
 
