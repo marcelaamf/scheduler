@@ -5,43 +5,55 @@ import Header from "./Header";
 import Show from "./Show";
 import Empty from "./Empty";
 import Form from "./Form";
-
+import Status from "./Status";
 
 import useVisualMode from "../../hooks/useVisualMode";
-
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
+const SAVING = "SAVING";
 
 export default function Appointment(props) {
-  const {mode, transition, back} = useVisualMode (
+  console.log("props", props)
+  const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
 
-return (
+  function save(name, interviewer) {
+    const interview = { student: name, interviewer };
 
-  <article className="appointment">
-    <Header time={props.time} />
+    transition (SAVING)
+    console.log("props.bookInterview", props.bookInterview)
+    props.bookInterview(props.id, interview)
+    
+    .then (()=> {
+      console.log("interview booked successfuly" ) //this shows nothing. This.then is not being called.
+      transition(SHOW)
+    }
+    )
+  }
+
+  return (
+    <article className="appointment">
+      <Header time={props.time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-      {mode === SHOW && 
+      {mode === SHOW && (
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
-        /> 
-      }
-      {mode === CREATE &&
+        />
+      )}
+      {mode === CREATE && (
         <Form
-          interviewers={[]}
-          onSave={"onSave"}
+        
+          interviewers={props.interviewers}
+          onSave = {save}
           onCancel={() => back(EMPTY)}
         />
-      }
-
-  </article>
-)
-
+      )}
+      {mode === SAVING && <Status/>}
+      
+    </article>
+  );
 }
-
-//if propos.interview.length>0 render show
-//if propos.interview.length =0 rende empty
