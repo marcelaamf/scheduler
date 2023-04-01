@@ -21,7 +21,7 @@ export default function Application(props) {
     setState({ ...state, day });
   };
 
-  function bookInterview(id, interview) {
+  const bookInterview = function (id, interview) {
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview },
@@ -29,47 +29,43 @@ export default function Application(props) {
 
     const appointments = {
       ...state.appointments,
-      [id]: appointment
+      [id]: appointment,
     };
 
     return axios
       .put(`/api/appointments/${id}`, appointment)
       .then(() => setState((prev) => ({ ...prev, appointments })))
       .catch((error) => console.log(error));
-  }
+  };
 
-  function cancelInterview(id) {
-   const appointment = {...state.appointments[id], interview: null }
-   const appointments = {...state.appointments, [id]: appointment };
-    console.log("canceling interview")
+  const cancelInterview = function (id) {
+    const appointment = { ...state.appointments[id], interview: null };
+    const appointments = { ...state.appointments, [id]: appointment };
+    console.log("canceling interview");
 
     return axios
-    .delete (`/api/appointments/${id}`)
-    .then (() => setState({...state, appointments}))
-    .catch((error) => console.log(error))
-  }
+      .delete(`/api/appointments/${id}`)
+      .then(() => setState({ ...state, appointments }))
+      .catch((error) => console.log(error));
+  };
 
-  
   //Retreive Appointments
   const dailyAppointments = getAppointmentsForDay(state, state.day);
-  //added state.appointments with conditional rendering
-  const schedule =
-    state.appointments &&
-    dailyAppointments.map((appointment) => {
-      const interview = getInterview(state, appointment.interview);
-      const interviewers = getInterviewersForDay(state, state.day);
-      return (
-        <Appointment
-          key={appointment.id}
-          id={appointment.id}
-          time={appointment.time}
-          interview={interview}
-          interviewers={interviewers}
-          bookInterview={bookInterview}
-          cancelInterview={cancelInterview}
-        />
-      );
-    });
+  const schedule = dailyAppointments.map((appointment) => {
+    const interview = getInterview(state, appointment.interview);
+    const interviewers = getInterviewersForDay(state, state.day);
+    return (
+      <Appointment
+        key={appointment.id}
+        id={appointment.id}
+        time={appointment.time}
+        interview={interview}
+        interviewers={interviewers}
+        bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
+      />
+    );
+  });
 
   //API Requests
   useEffect(() => {
