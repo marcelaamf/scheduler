@@ -21,20 +21,19 @@ const ERROR_DELETE = "ERROR_DELETE";
 const ERROR_SAVE = "ERROR_SAVE";
 
 export default function Appointment(props) {
-  console.log("props", props);
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
 
   function save(name, interviewer) {
     const interview = { student: name, interviewer };
-
+    
     transition(SAVING);
 
     props
-    .bookInterview(props.id, interview)
-    .then(() => transition(SHOW))
-    .catch(error => transition(ERROR_SAVE, true))
+      .bookInterview(props.id, interview)
+      .then(() => transition(SHOW))
+      .catch((error) => transition(ERROR_SAVE, true));
   }
 
   function onDelete() {
@@ -44,16 +43,14 @@ export default function Appointment(props) {
   function deleteAppointment(event) {
     transition(DELETING, true);
     props
-    .cancelInterview(props.id)
-    .then(() => transition(EMPTY))
-    .catch(error => transition(ERROR_DELETE, true))
+      .cancelInterview(props.id)
+      .then(() => transition(EMPTY))
+      .catch((error) => transition(ERROR_DELETE, true));
   }
 
   function onEdit() {
     transition(EDIT);
   }
-
-  
 
   return (
     <article className="appointment">
@@ -89,10 +86,22 @@ export default function Appointment(props) {
           interviewer={props.interview.interviewer.id}
           interviewers={props.interviewers}
           onSave={save}
-          onCancel={() => back(SHOW)}
+          onCancel={() => back()}
         />
       )}
-
+       {mode ===  ERROR_SAVE && (
+        <Confirm
+          message={"Error saving your appoinment. Please try again"}
+          onClose={()=> back()}
+        />
+      )}
+      {mode === ERROR_DELETE && (
+        <Confirm
+          message={"Error deleteing your appoinment. Please try again"}
+          onClose={()=> back()}
+        />
+      )}
+      
     </article>
   );
 }
