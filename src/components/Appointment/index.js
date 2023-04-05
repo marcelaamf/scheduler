@@ -27,7 +27,7 @@ export default function Appointment(props) {
 
   function save(name, interviewer) {
     const interview = { student: name, interviewer };
-    
+
     transition(SAVING);
 
     props
@@ -53,7 +53,7 @@ export default function Appointment(props) {
   }
 
   return (
-    <article className="appointment" data-testid="appointment" >
+    <article className="appointment" data-testid="appointment">
       <Header time={props.time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
@@ -89,19 +89,18 @@ export default function Appointment(props) {
           onCancel={() => back()}
         />
       )}
-       {mode ===  ERROR_SAVE && (
+      {mode === ERROR_SAVE && (
         <Confirm
           message={"Error saving your appoinment."}
-          onClose={()=> back()}
+          onClose={() => back()}
         />
       )}
       {mode === ERROR_DELETE && (
         <Confirm
           message={"Error deleteing your appoinment."}
-          onClose={()=> back()}
+          onClose={() => back()}
         />
       )}
-      
     </article>
   );
 }

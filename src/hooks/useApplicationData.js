@@ -23,7 +23,13 @@ export default function useApplicationData() {
     };
     return axios
       .put(`/api/appointments/${id}`, appointment)
-      .then(() => setState((prev) => ({ ...prev, appointments, days: spotsRemaining(appointments, id) })))
+      .then(() =>
+        setState((prev) => ({
+          ...prev,
+          appointments,
+          days: spotsRemaining(appointments, id),
+        }))
+      )
       .catch((error) => console.log(error));
   };
 
@@ -34,19 +40,29 @@ export default function useApplicationData() {
 
     return axios
       .delete(`/api/appointments/${id}`)
-      .then(() => setState((prev) => ({ ...prev, appointments, days: spotsRemaining(appointments, id) })))
+      .then(() =>
+        setState((prev) => ({
+          ...prev,
+          appointments,
+          days: spotsRemaining(appointments, id),
+        }))
+      )
       .catch((error) => console.log(error));
   };
 
   //Update Spots
 
   const spotsRemaining = function (appointments, appointmentId) {
-    const specificDay = state.days.find(d => d.appointments.includes(appointmentId)) // find the day that has the correct appointment id
-    const spots = specificDay.appointments.filter(id => appointments[id].interview === null).length
-    return state.days.map(d => d.appointments.includes(appointmentId) ? {...d, spots} : d) 
+    const specificDay = state.days.find((d) =>
+      d.appointments.includes(appointmentId)
+    ); // find the day that has the correct appointment id
+    const spots = specificDay.appointments.filter(
+      (id) => appointments[id].interview === null
+    ).length;
+    return state.days.map((d) =>
+      d.appointments.includes(appointmentId) ? { ...d, spots } : d
+    );
   };
-   
- 
 
   //API Requests
   useEffect(() => {

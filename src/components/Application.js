@@ -7,16 +7,12 @@ import {
   getInterview,
   getInterviewersForDay,
 } from "../helpers/selectors";
-import useApplicationData from "../hooks/useApplicationData"
+import useApplicationData from "../hooks/useApplicationData";
 
 export default function Application(props) {
-  const {
-    state,
-    setDay,
-    bookInterview,
-    cancelInterview
-  } = useApplicationData();
-  
+  const { state, setDay, bookInterview, cancelInterview } =
+    useApplicationData();
+
   //Retreive Appointments
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const schedule = dailyAppointments.map((appointment) => {
@@ -34,7 +30,7 @@ export default function Application(props) {
       />
     );
   });
- 
+
   return (
     <main className="layout">
       <section className="sidebar">
