@@ -126,3 +126,4 @@ it("calls onCancel and resets the input field", () => {
   expect(onCancel).toHaveBeenCalledTimes(1);
 });
 });
+
