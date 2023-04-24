@@ -3,8 +3,8 @@
 
 # Scheduler Pictures
 
-!["Desktop version"](#)
-!["Desktop version"](#)
+!["Desktop version"](#https://github.com/marcelaamf/scheduler/blob/master/Docs/Screenshot%202023-04-24%20at%202.27.02%20PM.png?raw=true)
+!["Desktop version"](#https://github.com/marcelaamf/scheduler/blob/master/Docs/Screenshot%202023-04-24%20at%202.27.29%20PM.png?raw=true)
 
 ## Getting Started
 The project requires the Interview Scheduler API. Please fork the repository from:  
