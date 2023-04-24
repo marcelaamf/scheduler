@@ -1,7 +1,7 @@
 # Interview Scheduler
  The Interview Scheduler is a Single Page Application (SPA) built with React. It allows users to book, edit, and cancel interview appointmnets.
 
-# Scheduler Pictures
+## Scheduler Pictures
 
 !["Desktop version"](https://github.com/marcelaamf/scheduler/blob/master/Docs/Screenshot%202023-04-24%20at%202.27.02%20PM.png?raw=true)
 !["Desktop version"](https://github.com/marcelaamf/scheduler/blob/master/Docs/Screenshot%202023-04-24%20at%202.27.29%20PM.png?raw=true)
@@ -17,27 +17,27 @@ Follow the intructions provided on the README file to set up the PostgreSQL data
 Install dependencies with `npm install`.
 
  Dependencies:
-  axios
-  classnames
-  normalize.css
-  react
-  react-dom
-  react-scripts
+  - axios
+  - classnames
+  - normalize.css
+  - react
+  - react-dom
+  - react-scripts
 
   DevDependencies:
-    @babel/core
-    @storybook/addon-actions
-    @storybook/addon-backgrounds
-    @storybook/addon-links
-    @storybook/addons
-    @storybook/react
-    @testing-library/jest-dom
-    @testing-library/react
-    @testing-library/react-hooks
-    babel-loade
-    prop-types
-    react-test-renderer
-    sass
+    - @babel/core
+    - @storybook/addon-actions
+    - @storybook/addon-backgrounds
+    - @storybook/addon-links
+    - @storybook/addons
+    - @storybook/react
+    - @testing-library/jest-dom
+    - @testing-library/react
+    - @testing-library/react-hooks
+    - babel-loade
+    - prop-types
+    - react-test-renderer
+    - sass
 
 ## Running Scheduler-API
 From the Scheduler-API root directory:
@@ -60,17 +60,17 @@ The project used multiple testing frameworks:
 - Unit testing and integration testing with Jest and the Testing library.
 - End to end testing with Cypress.
 
-# Running Jest Test Framework
+### Running Jest Test Framework
 
 ```sh
 npm test
 ```
-# Running Storybook Visual Testbed
+### Running Storybook Visual Testbed
 
 ```sh
 npm run storybook
 ```
-# Running Cypress
+### Running Cypress
 
 ```sh
 npm run cypress
