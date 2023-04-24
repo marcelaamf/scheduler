@@ -24,20 +24,20 @@ Install dependencies with `npm install`.
   - react-dom
   - react-scripts
 
-  DevDependencies:
-    - @babel/core
-    - @storybook/addon-actions
-    - @storybook/addon-backgrounds
-    - @storybook/addon-links
-    - @storybook/addons
-    - @storybook/react
-    - @testing-library/jest-dom
-    - @testing-library/react
-    - @testing-library/react-hooks
-    - babel-loade
-    - prop-types
-    - react-test-renderer
-    - sass
+DevDependencies:
+  - @babel/core
+  - @storybook/addon-actions
+  - @storybook/addon-backgrounds
+  - @storybook/addon-links
+  - @storybook/addons
+  - @storybook/react
+  - @testing-library/jest-dom
+  - @testing-library/react
+  - @testing-library/react-hooks
+  - babel-loade
+  - prop-types
+  - react-test-renderer
+  - sass
 
 ## Running Scheduler-API
 From the Scheduler-API root directory:
