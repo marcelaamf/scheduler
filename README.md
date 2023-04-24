@@ -3,8 +3,8 @@
 
 # Scheduler Pictures
 
-!["Desktop version"]()
-!["Desktop version"]()
+!["Desktop version"](#)
+!["Desktop version"](#)
 
 ## Getting Started
 The project requires the Interview Scheduler API. Please fork the repository from:  
