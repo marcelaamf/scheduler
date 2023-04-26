@@ -30,7 +30,7 @@ export default function useApplicationData() {
           days: spotsRemaining(appointments, id),
         }))
       )
-      .catch((error) => console.log(error));
+      // .catch((error) => console.log(error));
   };
 
   const cancelInterview = function (id) {
@@ -47,7 +47,7 @@ export default function useApplicationData() {
           days: spotsRemaining(appointments, id),
         }))
       )
-      .catch((error) => console.log(error));
+      // .catch((error) => console.log("error useApp", error));
   };
 
   //Update Spots
