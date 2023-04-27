@@ -18,7 +18,7 @@ export default function DayListItem({ name, selected, spots, setDay }) {
     } else if (spots === 1) {
       return <>{spots} spot remaining</>;
     } else {
-      return <>{} spots remaining</>;
+      return <>{spots} spots remaining</>;
     }
   };
 

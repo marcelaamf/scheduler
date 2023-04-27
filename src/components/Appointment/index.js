@@ -7,6 +7,8 @@ import Empty from "./Empty";
 import Form from "./Form";
 import Status from "./Status";
 import Confirm from "./Confirm";
+import Error from "./Error";
+
 
 import useVisualMode from "../../hooks/useVisualMode";
 
@@ -47,7 +49,6 @@ export default function Appointment(props) {
       .then(() => transition(EMPTY))
       .catch((error) => {
         transition(ERROR_DELETE, true)
-        console.log("error:", error)
       });
   }
 
@@ -77,7 +78,7 @@ export default function Appointment(props) {
       {mode === SAVING && <Status message={"Saving"} />}
       {mode === CONFIRMDELETE && (
         <Confirm
-          message={"Are you sure you would like to delete?"}
+        message={"Are you sure you would like to delete?"}
           onCancel={back}
           onConfirm={deleteAppointment}
         />
@@ -93,13 +94,13 @@ export default function Appointment(props) {
         />
       )}
       {mode === ERROR_SAVE && (
-        <Confirm
+        <Error
           message={"Error saving your appoinment."}
           onClose={() => back()}
         />
       )}
       {mode === ERROR_DELETE && (
-        <Confirm
+        <Error
           message={"Error deleteing your appoinment."}
           onClose={() => back()}
         />
