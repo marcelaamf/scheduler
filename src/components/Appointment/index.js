@@ -90,19 +90,19 @@ export default function Appointment(props) {
           interviewer={props.interview.interviewer.id}
           interviewers={props.interviewers}
           onSave={save}
-          onCancel={() => back()}
+          onCancel={back}
         />
       )}
       {mode === ERROR_SAVE && (
         <Error
           message={"Error saving your appoinment."}
-          onClose={() => back()}
+          onClose={back}
         />
       )}
       {mode === ERROR_DELETE && (
         <Error
           message={"Error deleteing your appoinment."}
-          onClose={() => back()}
+          onClose={back}
         />
       )}
     </article>
